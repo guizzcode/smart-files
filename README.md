@@ -1,3 +1,5 @@
+📄 🇧🇷 Versão em português: [README.pt-BR.md](README.pt-BR.md)
+
 # Smart Files
 
 <p align="center">
