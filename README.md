@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/status-In--Development-yellow?style=for-the-badge" />
 </p>
 
-![banner](banner.png)
+<img src="banner.jpg" width="100%" height="250px" />
 
 > This project focuses on managing PDF and TXT files to simplify conversions, reading, and processing, with AI integration.
 
