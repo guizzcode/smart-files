@@ -1,48 +1,43 @@
 import os
 from .menus import *
-from utils import clear
+from utils import *
 from services import *
+
 
 def run():
     while True:
         initial_menu()
-        option = input('Option: ')
-        if option.isnumeric():
-            match option:
-                case '1':
+        main_menu_option = input("Option: ")
+        menu_checked_option = it_is_number(main_menu_option)
+
+        match menu_checked_option:
+            case "1":
+                try:
                     clear()
                     show_pdf_files()
                     pdf_options()
-                    option = input('Option: ')
-                    if option.isnumeric():
-                        try:
-                            match option:
-                                case '1':
-                                    file = input('Why file?: ')
-                                    if '.pdf' in file:
-                                        file = file.replace('.pdf', '')
-                                    manage_summary(f'./documents/pdf/{file}.pdf')                                
-                                    
-                                case '2':
-                                    file = input('Why file?: ')
-                                    if '.pdf' in file:
-                                         file = file.replace('.pdf', '')
-                                    extract_text_to_txt(f'./documents/pdf/{file}.pdf')
-                                
-                                case '3':
-                                    merge_pdfs()
-                                    
-                                case '4':
-                                    clear()
-                        except Exception as e:
-                            print(f'Error: {e}')         
-                            continue                          
+                    pdf_user_option = input("Option: ")
+                    selected_function = it_is_number(pdf_user_option)
+
+                    functions = {
+                        "1": lambda: manage_summary(get_file()),
+                        "2": lambda: extract_pdf_to_txt(get_file()),
+                        "3": merge_pdfs,
+                        "4": clear,
+                    }
+
+                    if selected_function in functions:
+                        functions[selected_function]()
                     else:
-                        print ('Only numbers in 1-4.')    
-                        continue                                                              
-                case '2':
-                    clear()
-                    break
-        else:
-            print ('Only numbers.')
-            continue
+                        print("Invalid Option")
+                        clear()
+                except Exception as e:
+                    print(f"Error. [{e}]")
+
+            case "2":
+                clear()
+                break
+
+            case _:
+                print("Invalid Option.")
+                clear()
