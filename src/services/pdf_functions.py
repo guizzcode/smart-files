@@ -15,25 +15,25 @@ headers = {"Authorization": f"Bearer {user_api}"}
 
 
 def show_pdf_files():
-    print("📁-----These are your files-----📁\n".center(70))
+    print("📁-----Seus arquivos-----📁\n".center(70))
     try:
         for file in os.listdir("./documents/pdf"):
             if file.endswith(".pdf"):
                 print(f"📙 - {file}".center(70))
         print("=" * 70)
     except Exception:
-        print("Failed to load files...")
+        print("Falha ao carregar arquivos...")
 
 
 def save_txt(content):
-    title = str(input("Title for the TXT file: "))
+    title = str(input("Titulo para o arquivo.txt: "))
     try:
         path = f"./documents/txt/{title}.txt"
         with open(path, "w") as f:
             f.write(content)
-        print(f"Done! The file {title}.txt was saved.")
+        print(f"Pronto! o arquivo {title}.txt foi salvo.")
     except Exception as e:
-        print(f"Failed to save {title}.txt")
+        print(f"Falha ao salvar {title}.txt")
 
 
 def split_text(text, max_words=300):
@@ -54,7 +54,7 @@ def summarize_text(content):
             print("Response:", response.text)
             return None
     except Exception:
-        print("Unknown error.")
+        print("Erro desconhecido.")
 
 
 def summarize_chunks(content):
@@ -67,7 +67,7 @@ def summarize_chunks(content):
         full_summary = " ".join(parts)
         return summarize_text(full_summary)
     except Exception:
-        print("Unknown error.")
+        print("Erro desconhecido.")
 
 
 def extract_pdf_to_txt(file):
@@ -81,7 +81,7 @@ def extract_pdf_to_txt(file):
                     content += text + "\n"
             save_txt(content)
         except Exception as e:
-            print("Failed to extract text. (check your file.)")
+            print("Falha ao extrair texto. (cheque seu arquivo)")
 
 
 def manage_summary(file):
@@ -93,36 +93,36 @@ def manage_summary(file):
                 text = page.extract_text()
                 if text:
                     content += text + "\n"
-            print("> PDF loaded.\n")
+            print("> PDF carregado.\n")
             option = input(
                 """
-            [1] View summary now
-            [2] Export summary to TXT file
+            [1] Visualizar o resumo agora
+            [2] Exportar o resumo para um arquivo txt
             Option: """
             )
             if option.isnumeric():
                 match option:
                     case "1":
                         summary = summarize_chunks(content)
-                        print("\nSummary:\n", summary)
+                        print("\nResumo:\n", summary)
                     case "2":
                         save_txt(summarize_chunks(content))
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Erro: {e}")
             return ""
     else:
-        print("This file is not a PDF!")
+        print("Esse arquivo não é um PDF!")
         return ""
 
 
 def merge_pdfs():
     merger = PdfMerger()
     try:
-        num = int(input("How many files?: "))
+        num = int(input("Quantos arquivos?: "))
         c = 0
         pdfs = []
         while c < num:
-            filename = input(f"filename{c + 1}: ")
+            filename = input(f"arquivo {c + 1}: ")
             if ".pdf" in filename:
                 filename = filename.replace(".pdf", "")
             file = f"./documents/pdf/{filename}.pdf"
@@ -132,13 +132,13 @@ def merge_pdfs():
         for pdf_file in pdfs:
             merger.append(pdf_file)
 
-        pdf_merger_name = input("New pdf name: ")
+        pdf_merger_name = input("Nome para o novo PDF: ")
         if ".pdf" in pdf_merger_name:
             pdf_merger_name = pdf_merger_name.replace(".pdf", "")
 
         merger.write(f"./documents/pdf/{pdf_merger_name}.pdf")
         merger.close()
-        print(f"Merged PDF saved as ./documents/pdf/{pdf_merger_name}.pdf")
+        print(f"Salvo em ./documents/pdf/{pdf_merger_name}.pdf")
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Erro: {e}")

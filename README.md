@@ -1,51 +1,51 @@
-📄 🇧🇷 Versão em português: [README.pt-BR.md](README.pt-BR.md)
+📄 🇺🇸 English version: [README.en-US.md](README.en-US.md)  
 
 # Smart Files
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/status-In--Development-yellow?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/status-Em--Desenvolvimento-yellow?style=for-the-badge" />
 </p>
 
 <img src="banner.jpg" width="100%" height="250px" />
 
-> This project focuses on managing PDF and TXT files to simplify conversions, reading, and processing, with AI integration.
+> Este projeto tem como foco o gerenciamento de arquivos PDF e TXT para simplificar conversões, leitura e processamento, com integração de IA.
 
-## ✨ Features
+## ✨ Funcionalidades
 
-- 🤖 AI-powered PDF and TXT summarization.
-- 📖 Convert files (PDF, TXT) to plain text.
-- 📚 Merge multiple PDF files into one.
-- 📄 Extract raw text from PDF documents.
+- 🤖 Resumo automático de arquivos PDF e TXT com IA.
+- 📖 Conversão de arquivos (PDF, TXT) para texto simples.
+- 📚 Mesclagem de múltiplos arquivos PDF em um só.
+- 📄 Extração de texto bruto de documentos PDF.
 
-## ⚙️ Requirements
+## ⚙️ Requisitos
 
-- Python3
+- Python3  
 - requests
 
-## 🔐 API Token (Required)
+## 🔐 Token de API (Obrigatório)
 
-To use the summarization feature, you need a Hugging Face API token.
+Para usar a função de resumo, você precisa de um token de API do Hugging Face.
 
-1. Go to [hugging face](https://huggingface.co/settings/tokens).
-2. Create a new token. (read access is enough)
-3. Copy the token and paste it into your `config.json` file.
+1. Acesse [hugging face](https://huggingface.co/settings/tokens).  
+2. Crie um novo token (permissão de leitura é suficiente).  
+3. Copie o token e cole no seu arquivo `config.json`.
 
-## 🚀 How to Run
+## 🚀 Como Executar
 
-1. Install requirements.
+1. Instale os requisitos.
 ``` bash
     pip install -r requirements.txt
 ```
-2. Run the main.py file!
+2. Rode o arquivo main.py!
 ``` bash
     python3 src/main.py 
 ```
 
-## ❓ How to use
+## ❓ Como Usar
 
-You need to move your files (PDF or TXT) to the designated folders (src/documents/pdf or src/documents/txt) before using the application.
+Você deve mover seus arquivos (PDF ou TXT) para as pastas designadas (src/documents/pdf ou src/documents/txt) antes de usar a aplicação.
 
-## 📝 License
+## 📝 Licença
 
-Licensed under the [MIT License](LICENSE).
+Licenciado sob a [Licença MIT](LICENSE).
