@@ -21,7 +21,7 @@ def run():
 
                     functions = {
                         "1": lambda: manage_summary(get_file()),
-                        "2": lambda: extract_pdf_to_txt(get_file()),
+                        "2": extract_pdf_to_txt,
                         "3": merge_pdfs,
                         "4": clear,
                     }

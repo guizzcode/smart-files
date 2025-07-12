@@ -9,12 +9,12 @@
 
 <img src="banner.jpg" width="100%" height="250px" />
 
-> This project focuses on managing PDF and TXT files to simplify conversions, reading, and processing, with AI integration.
+> This project focuses on managing PDF and TXT files to simplify conversions, reading, processing, and summary with AI integration.
 
 ## ✨ Features
 
 - 🤖 AI-powered PDF and TXT summarization.
-- 📖 Convert files (PDF, TXT) to plain text.
+- 📖 Convert PDF files to plain text with option of conversion single or multiple!
 - 📚 Merge multiple PDF files into one.
 - 📄 Extract raw text from PDF documents.
 
@@ -37,14 +37,18 @@ To use the summarization feature, you need a Hugging Face API token.
 ``` bash
     pip install -r requirements.txt
 ```
-2. Run the main.py file!
+2. Clone this repository.
 ``` bash
-    python3 src/main.py 
+    git clone https://github.com/guizcodes/smart-files
+```
+3. Run the main.py file!
+``` bash
+    python3 smart-files/src/main.py 
 ```
 
 ## ❓ How to use
 
-You need to move your files (PDF or TXT) to the designated folders (src/documents/pdf or src/documents/txt) before using the application.
+You need to move your PDF files to the designated folder src/documents/pdf before using the application.
 
 ## 📝 License
 

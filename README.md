@@ -9,12 +9,12 @@
 
 <img src="banner.jpg" width="100%" height="250px" />
 
-> Este projeto tem como foco o gerenciamento de arquivos PDF e TXT para simplificar conversões, leitura e processamento, com integração de IA.
+> Este projeto tem como foco o gerenciamento de arquivos PDF e TXT para simplificar conversões, leitura, processamento, e resumo com integração de IA.
 
 ## ✨ Funcionalidades
 
 - 🤖 Resumo automático de arquivos PDF e TXT com IA.
-- 📖 Conversão de arquivos (PDF, TXT) para texto simples.
+- 📖 Conversão de arquivos PDF para TXT com opções de conversão única ou conversão de multiplos arquivos!
 - 📚 Mesclagem de múltiplos arquivos PDF em um só.
 - 📄 Extração de texto bruto de documentos PDF.
 
@@ -37,14 +37,18 @@ Para usar a função de resumo, você precisa de um token de API do Hugging Face
 ``` bash
     pip install -r requirements.txt
 ```
-2. Rode o arquivo main.py!
+2. Clone o repositório.
 ``` bash
-    python3 src/main.py 
+    git clone https://github.com/guizcodes/smart-files
+```
+3. Rode o arquivo main.py!
+``` bash
+    python3 smart-files/src/main.py 
 ```
 
 ## ❓ Como Usar
 
-Você deve mover seus arquivos (PDF ou TXT) para as pastas designadas (src/documents/pdf ou src/documents/txt) antes de usar a aplicação.
+Você deve mover seus arquivos PDF para a pasta designada em src/documents/pdf antes de usar a aplicação.
 
 ## 📝 Licença
 

@@ -1,4 +1,5 @@
 from PyPDF2 import PdfReader, PdfMerger
+from utils import clear
 import os
 import requests
 import json
@@ -15,18 +16,18 @@ headers = {"Authorization": f"Bearer {user_api}"}
 
 
 def show_pdf_files():
-    print("📁-----Seus arquivos-----📁\n".center(70))
+    print("📁-----Seus arquivos-----📁\n".center(50))
     try:
         for file in os.listdir("./documents/pdf"):
             if file.endswith(".pdf"):
-                print(f"📙 - {file}".center(70))
-        print("=" * 70)
+                print(f"📙 - {file}".center(50))
+        print("=" * 54)
     except Exception:
         print("Falha ao carregar arquivos...")
 
 
 def save_txt(content):
-    title = str(input("Titulo para o arquivo.txt: "))
+    title = str(input("Titulo para o seu arquivo txt: "))
     try:
         path = f"./documents/txt/{title}.txt"
         with open(path, "w") as f:
@@ -34,6 +35,57 @@ def save_txt(content):
         print(f"Pronto! o arquivo {title}.txt foi salvo.")
     except Exception as e:
         print(f"Falha ao salvar {title}.txt")
+
+
+def extract_pdf_to_txt():
+    option = input(
+        """
+      [1] Conversão única
+      [2] Conversão multipla
+      Opção: """
+    )
+    if option == "1":
+        filename = input("Qual arquivo?: ")
+        file_directory = f"./documents/pdf/{filename}.pdf"
+        if file_directory.endswith(".pdf"):
+            try:
+                reader = PdfReader(file_directory)
+                content = ""
+                for page in reader.pages:
+                    text = page.extract_text()
+                    if text:
+                        content += text + "\n"
+                save_txt(content)
+            except Exception as e:
+                print("Falha ao extrair texto. (cheque seu arquivo)")
+    elif option == "2":
+        number_of_files = input("Quantos arquivos?: ")
+        if number_of_files.isnumeric():
+            try:
+                counter = 0
+                files = []
+                number_of_files = int(number_of_files)
+                for counter in range(0, number_of_files):
+                    file = str(input(f"Arquivo {counter + 1}: "))
+                    file_directory = f"./documents/pdf/{file}.pdf"
+                    if file_directory.endswith(".pdf"):
+                        files.append(file_directory)
+                    else:
+                        print("Esse arquivo não é um PDF!")
+                for file in files:
+                    reader = PdfReader(file)
+                    content = ""
+                    for page in reader.pages:
+                        text = page.extract_text()
+                        if text:
+                            content += text + "\n"
+                    save_txt(content)
+            except Exception:
+                print("Falha ao extrair os textos.")
+        else:
+            print("Opção Inválida.")
+    else:
+        print("Opção Inválida.")
 
 
 def split_text(text, max_words=300):
@@ -70,34 +122,23 @@ def summarize_chunks(content):
         print("Erro desconhecido.")
 
 
-def extract_pdf_to_txt(file):
-    if file.endswith(".pdf"):
-        try:
-            reader = PdfReader(file)
-            content = ""
-            for page in reader.pages:
-                text = page.extract_text()
-                if text:
-                    content += text + "\n"
-            save_txt(content)
-        except Exception as e:
-            print("Falha ao extrair texto. (cheque seu arquivo)")
-
-
 def manage_summary(file):
     if file.endswith(".pdf"):
         try:
             reader = PdfReader(file)
             content = ""
+            counter = 1
             for page in reader.pages:
                 text = page.extract_text()
                 if text:
                     content += text + "\n"
-            print("> PDF carregado.\n")
+                print(f"Página {counter} carregada.", end="\r")
+                counter += 1
             option = input(
                 """
             [1] Visualizar o resumo agora
             [2] Exportar o resumo para um arquivo txt
+            [3] Voltar sem visualizar
             Option: """
             )
             if option.isnumeric():
@@ -107,6 +148,10 @@ def manage_summary(file):
                         print("\nResumo:\n", summary)
                     case "2":
                         save_txt(summarize_chunks(content))
+                    case "3":
+                        clear()
+                        return
+
         except Exception as e:
             print(f"Erro: {e}")
             return ""
@@ -138,7 +183,7 @@ def merge_pdfs():
 
         merger.write(f"./documents/pdf/{pdf_merger_name}.pdf")
         merger.close()
-        print(f"Salvo em ./documents/pdf/{pdf_merger_name}.pdf")
+        print(f"Salvo em smart-files/src/documents/pdf/{pdf_merger_name}.pdf")
 
     except Exception as e:
         print(f"Erro: {e}")
