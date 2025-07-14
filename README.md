@@ -1,19 +1,16 @@
-📄 🇺🇸 English version: [README.en-US.md](README.en-US.md)  
-
 # Smart Files
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/status-Em--Desenvolvimento-yellow?style=for-the-badge" />
-</p>
-
-<img src="banner.jpg" width="100%" height="250px" />
+  <a href="README.en-US.md"><img src="https://img.shields.io/badge/%20Click%20for-English--Version🇺🇸-red?style=for-the-badge&labelColor=blue&logoColor=white" /></a>
+  
+<img src="banner.png" width="100%" height="240px" />
 
 > Este projeto tem como foco o gerenciamento de arquivos PDF e TXT para simplificar conversões, leitura, processamento, e resumo com integração de IA.
 
 ## ✨ Funcionalidades
 
-- 🤖 Resumo automático de arquivos PDF e TXT com IA.
+- 🤖 Resumo automático de arquivos PDF com IA.
 - 📖 Conversão de arquivos PDF para TXT com opções de conversão única ou conversão de multiplos arquivos!
 - 📚 Mesclagem de múltiplos arquivos PDF em um só.
 - 📄 Extração de texto bruto de documentos PDF.
