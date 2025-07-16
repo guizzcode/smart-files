@@ -80,6 +80,8 @@ def extract_pdf_to_txt():
                         if text:
                             content += text + "\n"
                     save_txt(content)
+                if counter >= 20:
+                    print("Talvez possa demorar um pouco para fazer o resumo. Aguarde!")
             except Exception:
                 print("Falha ao extrair os textos.")
         else:
@@ -91,7 +93,9 @@ def extract_pdf_to_txt():
 def split_text(text, max_words=300):
     words = text.split()
     for i in range(0, len(words), max_words):
-        yield " ".join(words[i : i + max_words])
+        chunk = " ".join(words[i : i + max_words])
+        if chunk.strip():
+            yield chunk
 
 
 def summarize_text(content):
@@ -102,9 +106,9 @@ def summarize_text(content):
             result = response.json()
             return result[0]["summary_text"]
         else:
-            print(f"Error: {response.status_code}")
-            print("Response:", response.text)
-            return None
+            if response.status_code == 400:
+                print(f"...")
+                return None
     except Exception:
         print("Erro desconhecido.")
 
@@ -116,10 +120,21 @@ def summarize_chunks(content):
             summary = summarize_text(chunk)
             if summary:
                 parts.append(summary)
+
+        if not parts:
+            print("Nenhuma parte pôde ser resumida.")
+            return ""
+
         full_summary = " ".join(parts)
-        return summarize_text(full_summary)
-    except Exception:
-        print("Erro desconhecido.")
+        final_summary = summarize_text(full_summary)
+        if final_summary:
+            return final_summary
+        else:
+            print("Erro ao resumir a parte final. O resumo está parcialmente completo.")
+            return full_summary
+    except Exception as e:
+        print("Erro ao resumir seu arquivo.")
+        return ""
 
 
 def manage_summary(file):
