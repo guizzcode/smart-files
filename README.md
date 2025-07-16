@@ -18,8 +18,8 @@
 
 ## ⚙️ Requisitos
 
-- Python3  
 - requests
+- PyPDF2
 
 ## 🔐 Token de API (Obrigatório)
 
