@@ -1,8 +1,9 @@
+<p align="center"><a href="README.en-US.md">English</a></p>
+
 # Smart Files
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <a href="README.en-US.md"><img src="https://img.shields.io/badge/%20Click%20for-English--Version🇺🇸-red?style=for-the-badge&labelColor=blue&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" /> </p>
   
 <img src="banner.png" width="100%" height="240px" />
 
@@ -38,9 +39,9 @@ Para usar a função de resumo, você precisa de um token de API do Hugging Face
 ``` bash
     git clone https://github.com/guizcodes/smart-files
 ```
-3. Rode o arquivo main.py!
+3. Rode diretamente o arquivo main.py!
 ``` bash
-    python3 smart-files/src/main.py 
+    python3 main.py 
 ```
 
 ## ❓ Como Usar

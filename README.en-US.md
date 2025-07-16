@@ -1,8 +1,9 @@
+<p align="center"><a href="README.md">Português-BR</a></p>
+
 # Smart Files
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <a href="README.md"><img src="https://img.shields.io/badge/%20Clique%20para-versão--Br🇧🇷-yellow?style=for-the-badge&labelColor=darkgreen&logoColor=white" /></a>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" /> </p>
   
 <img src="banner.png" width="100%" height="240px" />
 
@@ -17,8 +18,8 @@
 
 ## ⚙️ Requirements
 
-- Python3
 - requests
+- PyPDF2
 
 ## 🔐 API Token (Required)
 
@@ -40,7 +41,7 @@ To use the summarization feature, you need a Hugging Face API token.
 ```
 3. Run the main.py file!
 ``` bash
-    python3 smart-files/src/main.py 
+    python3 main.py 
 ```
 
 ## ❓ How to use
